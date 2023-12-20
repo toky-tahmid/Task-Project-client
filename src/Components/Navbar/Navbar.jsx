@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-// import logo from "../../../public/281-2811269_and-the-survey-says-clip-art-payroll-logo-removebg-preview.png";
+import logo from "../../../public/Task(4).png";
 
 import { AuthContext } from "../../providers/AuthProvider";
 const NavBar = () => {
@@ -44,7 +44,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="navbar w-full bg-white text-black">
+      <div className="navbar w-full -mt-7 bg-white text-black">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -70,7 +70,7 @@ const NavBar = () => {
               {navOptions}
             </ul>
           </div>
-          {/* <img className="w-28" src={logo} alt="" /> */}
+          <img className="w-28" src={logo} alt="" />
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
