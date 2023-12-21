@@ -10,7 +10,7 @@ const UserHome = () => {
         <br />
         <hr />
         {user && (
-        <div className="avatar mt-7 online lg:ml-[500px]">
+        <div className="avatar mt-7 online lg:ml-[400px]">
           <div className="w-32 rounded-full">
             <img src={user?.photoURL} />
           </div>
