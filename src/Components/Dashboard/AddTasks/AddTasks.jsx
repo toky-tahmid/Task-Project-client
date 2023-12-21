@@ -1,4 +1,5 @@
 import { useForm, Controller } from "react-hook-form";
+import Swal from "sweetalert2";
 const AddTasks = () => {
   const {
     register,
@@ -9,6 +10,34 @@ const AddTasks = () => {
   const onSubmit = (data, e) => {
     console.log(data);
     e.target.reset()
+    fetch("http://localhost:5000/allTasks", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+          Toast.fire({
+            icon: "success",
+            title: "Survey Added Successfully",
+          });
+        }
+      });
   };
   return (
     <div className="flex flex-col items-center justify-center  space-y-5 h-[100svh]">

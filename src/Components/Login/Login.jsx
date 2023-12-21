@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
-  const { logInUser, signInWithGoogle } = useContext(AuthContext);
+  const { logInUser, signInWithGoogle,githubLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const [error, setError] = useState(null);
@@ -25,7 +25,16 @@ const Login = () => {
         console.error(error);
       });
   };
-
+  const handleGitSignIn = () => {
+    githubLogin()
+      .then((result) => {
+        console.log(result.user);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
@@ -84,6 +93,12 @@ const Login = () => {
       className="btn glass btn-wide mt-2 ml-16 bg-red-500 hover:bg-red-600 text-white"
     >
       Google
+    </button>
+    <button
+      onClick={handleGitSignIn}
+      className="btn glass btn-wide mt-2 ml-16 bg-red-500 hover:bg-red-600 text-white"
+    >
+      GitHub
     </button>
   </div>
 </div>
