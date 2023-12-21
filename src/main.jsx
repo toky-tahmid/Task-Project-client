@@ -8,6 +8,9 @@ import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import AuthProvider from './providers/AuthProvider';
+import Dashboard from './Components/Dashboard/Dashboard';
+import UserHome from './Components/Dashboard/UserHome/UserHome';
+import ContactUs from './Components/ContactUs/ContactUs';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,21 +29,25 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      {
+        path: "/ContactUs",
+        element: <ContactUs></ContactUs>,
+      },
       
     ],
   },
-  // {
-  //   path: "/dashboard",
-  //   element: <Private><Dashboard></Dashboard></Private>,
-  //   loader: () => fetch("https://survey-server-mu.vercel.app/users"),
-  //   children: [
-  //     {
-  //       path: "/dashboard/adminHome",
-  //       element: <AdminHome></AdminHome>,
-  //     },
+  {
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
+    loader: () => fetch("https://survey-server-mu.vercel.app/users"),
+    children: [
+      {
+        path: "/dashboard/adminHome",
+        element: <UserHome></UserHome>,
+      },
     
-  //   ],
-  // },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

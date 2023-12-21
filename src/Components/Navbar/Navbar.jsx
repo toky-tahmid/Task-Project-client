@@ -1,15 +1,19 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../public/Task(4).png";
 
 import { AuthContext } from "../../providers/AuthProvider";
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const handleLogOut = () => {
-    logOut()
-      .then(() => {})
-      .catch((error) => console.log(error));
+  const handleLogOut = async () => {
+    try {
+      await logOut();
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const navOptions = (
@@ -18,7 +22,7 @@ const NavBar = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/surveys">Surveys Page</Link>
+        <Link to="/ContactUs">Contact Us</Link>
       </li>
       <li>
         <Link to="/pricing">Pricing page</Link>
