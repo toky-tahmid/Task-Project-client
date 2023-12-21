@@ -1,19 +1,33 @@
+/* eslint-disable react/no-unescaped-entities */
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
-    return (
-            
-<div className="hero min-w-full min-h-screen relative" style={{backgroundImage: 'url(https://i.ibb.co/j48YC9t/Grey-Modern-Professional-Business-Project-Presentation.png)'}}>
-  <div className="absolute inset-0 flex items-center justify-center">
-    {/* <button
-      className="rounded-lg bg-gradient-to-r from-pink-500 to-purple-500 py-3.5 px-7 font-sans text-sm font-bold uppercase text-white shadow-md hover:shadow-lg focus:shadow-outline focus:outline-none transition duration-300"
-      data-ripple-light="true"
+  const { user } = useContext(AuthContext);
+  return (
+    <div
+      className="hero min-w-full min-h-screen relative"
+      style={{
+        backgroundImage:
+          "url(https://i.ibb.co/j48YC9t/Grey-Modern-Professional-Business-Project-Presentation.png)",
+      }}
     >
-      Explore More
-    </button> */}
-  </div>
-</div>
-
-    );
+      {user?.email ? (
+        <Link to="/dashboard/adminHome">
+          <button className="mt-48 text-sm flex items-center gap-2 md:text-base inter rounded py-3 px-5 text-white font-bold bg-purple-500 content-glow hover:bg-transparent hover:border-blue-500 hover:border hover:duration-1000 hover:text-purple-500">
+            Let's Explore
+          </button>
+        </Link>
+      ) : (
+        <Link to="/login">
+          <button className="mt-48 text-sm flex items-center gap-2 md:text-base inter rounded py-3 px-5 text-white font-bold bg-purple-500 content-glow hover:bg-transparent hover:border-blue-500 hover:border hover:duration-1000 hover:text-purple-500">
+            Let's Explore
+          </button>
+        </Link>
+      )}
+    </div>
+  );
 };
 
 export default Banner;

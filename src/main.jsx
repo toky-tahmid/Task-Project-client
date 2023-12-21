@@ -13,6 +13,7 @@ import UserHome from './Components/Dashboard/UserHome/UserHome';
 import ContactUs from './Components/ContactUs/ContactUs';
 import AddTasks from './Components/Dashboard/AddTasks/AddTasks';
 import Tasks from './Components/Dashboard/Tasks/Tasks';
+import TaskUpdate from './Components/Dashboard/Tasks/TaskUpdate';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/tasks",
         element: <Tasks></Tasks>,
+      },
+      {
+        path: "taskUpdate/:id",
+        element: <TaskUpdate></TaskUpdate>,
+        loader:({params})=>fetch(`http://localhost:5000/alltask/${params.id}`)
       },
     
     ],
