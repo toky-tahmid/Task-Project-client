@@ -11,6 +11,7 @@ import AuthProvider from './providers/AuthProvider';
 import Dashboard from './Components/Dashboard/Dashboard';
 import UserHome from './Components/Dashboard/UserHome/UserHome';
 import ContactUs from './Components/ContactUs/ContactUs';
+import AddTasks from './Components/Dashboard/AddTasks/AddTasks';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,6 +45,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/adminHome",
         element: <UserHome></UserHome>,
+      },
+      {
+        path: "/dashboard/addTasks",
+        element: <AddTasks></AddTasks>,
+      },
+      {
+        path: "/dashboard/tasks",
+        element: <AddTasks></AddTasks>,
       },
     
     ],

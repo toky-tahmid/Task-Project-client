@@ -1,18 +1,24 @@
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const UserHome = () => {
-    return (
-        
-        <div>
-            <>
-        <h1 className="text-4xl text-center font-bold">Welcome to Admin</h1>
+  const { user } = useContext(AuthContext);
+  return (
+    <div>
+      <>
+        <h1 className="text-4xl text-center font-bold">Welcome To Profile</h1>
         <br />
         <hr />
-       <div>
-        <img className="mx-auto" src="https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png" alt="" />
-       </div>
-       </>
+        {user && (
+        <div className="avatar mt-7 online lg:ml-[500px]">
+          <div className="w-32 rounded-full">
+            <img src={user?.photoURL} />
+          </div>
         </div>
-    );
+        )}
+      </>
+    </div>
+  );
 };
 
 export default UserHome;

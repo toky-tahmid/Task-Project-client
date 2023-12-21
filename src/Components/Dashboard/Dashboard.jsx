@@ -1,7 +1,6 @@
-
-import { FaDonate, FaHome, FaList, FaUsers } from "react-icons/fa";
+import { FaHome, FaTasks, } from "react-icons/fa";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { MdPeopleAlt } from "react-icons/md";
+import { MdOutlinePostAdd,  } from "react-icons/md";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 const Dashboard = () => {
@@ -28,43 +27,25 @@ const Dashboard = () => {
               to="/dashboard/adminHome"
               className="flex items-center space-x-2 text-lg hover:text-gray-500 py-2 px-4">
               <FaHome />
-              <span>Admin Home</span>
+              <span>Profile</span>
             </NavLink>
-          </li>
+          </li>     
           <li>
             <NavLink
-              to="/dashboard/manageUsers"
-              className="flex items-center space-x-2 text-lg hover:text-gray-500 py-2 px-4"
-            >
-              <FaUsers />
-              <span>Manage Users</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/manageApplied"
+              to="/dashboard/addTasks"
               className="flex items-center space-x-2 text-lg hover:text-gray-200 py-2 px-4"
             >
-              <MdPeopleAlt />
-              <span>Applied Surveys</span>
+              <MdOutlinePostAdd />
+              <span>Add Tasks</span>
             </NavLink>
           </li>
           <li>
             <NavLink
-              to="/dashboard/addSurveys"
+              to="/dashboard/tasks"
               className="flex items-center space-x-2 text-lg hover:text-gray-200 py-2 px-4"
             >
-              <FaDonate />
-              <span>Add Surveys</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/manageSurveys"
-              className="flex items-center space-x-2 text-lg hover:text-gray-200 py-2 px-4"
-            >
-              <FaList />
-              <span>Manage Surveys</span>
+              <FaTasks />
+              <span>Tasks</span>
             </NavLink>
           </li>
           {/* Shared nav links */}

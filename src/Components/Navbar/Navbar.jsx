@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../public/Task(4).png";
-
 import { AuthContext } from "../../providers/AuthProvider";
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -106,3 +105,6 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+
+
