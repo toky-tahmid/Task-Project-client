@@ -6,7 +6,8 @@ const UserHome = () => {
   return (
     <div>
       <>
-        <h1 className="text-4xl text-center font-bold">Welcome To Profile</h1>
+        <h1 className="text-4xl text-center font-bold">Welcome {user?.displayName
+}</h1>
         <br />
         <hr />
         {user && (

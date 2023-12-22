@@ -3,15 +3,15 @@ const Footer = () => {
   const LINKS = [
     {
       title: "Product",
-      items: ["Overview", "Features", "Solutions", "Tutorials"],
-    },
-    {
-      title: "Company",
-      items: ["About us", "Careers", "Press", "News"],
+      items: ["Overview", "Features", "Solutions",],
     },
     {
       title: "Social Media",
-      items: ["Instagram", "Linkedin", "GitHub"],
+      items: [
+        { name: "Instagram", url: "https://www.instagram.com/" },
+        { name: "Linkedin", url: "https://www.linkedin.com/" },
+        { name: "GitHub", url: "https://github.com/" },
+      ],
     },
   ];
   const currentYear = new Date().getFullYear();
@@ -20,7 +20,11 @@ const Footer = () => {
       <div className="mx-auto w-full px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
           <Typography variant="h5" className="mb-6 text-neutral-400">
-          <img className="h-32 ml-10 mt-8" src="https://i.ibb.co/XLNKnNQ/Task-7.png" alt="" />
+            <img
+              className="h-32 ml-10 mt-8"
+              src="https://i.ibb.co/XLNKnNQ/Task-7.png"
+              alt=""
+            />
           </Typography>
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items }) => (
@@ -32,18 +36,33 @@ const Footer = () => {
                 >
                   {title}
                 </Typography>
-                {items.map((link) => (
-                  <li key={link}>
-                    <Typography
-                      as="a"
-                      href="#"
-                      color="gray"
-                      className="py-1.5 w-0 font-normal transition-colors text-neutral-500 hover:text-slate-600"
-                    >
-                      {link}
-                    </Typography>
-                  </li>
-                ))}
+                {title === "Social Media"
+                  ? items.map(({ name, url }) => (
+                      <li key={name}>
+                        <Typography
+                          as="a"
+                          href={url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          color="gray"
+                          className="py-1.5 w-0 font-normal transition-colors text-neutral-500 hover:text-slate-600"
+                        >
+                          {name}
+                        </Typography>
+                      </li>
+                    ))
+                  : items.map((link) => (
+                      <li key={link}>
+                        <Typography
+                          as="a"
+                          href="#"
+                          color="gray"
+                          className="py-1.5 w-0 font-normal transition-colors text-neutral-500 hover:text-slate-600"
+                        >
+                          {link}
+                        </Typography>
+                      </li>
+                    ))}
               </ul>
             ))}
           </div>
